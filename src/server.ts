@@ -13,7 +13,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(routes);
 
 app.get("/", (request, response) => {
-    return response.json({ message: "Hello" });
+  return response.json({ message: "Hello" });
 });
 
 app.listen(3333, () => console.log("server is running 🚀️"));
