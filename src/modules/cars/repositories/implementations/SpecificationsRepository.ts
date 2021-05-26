@@ -4,23 +4,23 @@ import {
   ICreateSpecificationDTO,
 } from "../ISpecificationsRepository";
 
-class SpecificationRepository implements ISpecificationsRepository {
+class SpecificationsRepository implements ISpecificationsRepository {
   private specification: Specification[];
 
-  private static INSTANCE: SpecificationRepository;
+  private static INSTANCE: SpecificationsRepository;
 
-  private constructor() {
+  constructor() {
     this.specification = [];
   }
 
-  public static getInstance(): SpecificationRepository {
-    if (!SpecificationRepository.INSTANCE) {
-      SpecificationRepository.INSTANCE = new SpecificationRepository();
+  public static getInstance(): SpecificationsRepository {
+    if (!SpecificationsRepository.INSTANCE) {
+      SpecificationsRepository.INSTANCE = new SpecificationsRepository();
     }
-    return SpecificationRepository.INSTANCE;
+    return SpecificationsRepository.INSTANCE;
   }
 
-  create({ name, description }: ICreateSpecificationDTO): void {
+  async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
     const specification = new Specification();
 
     Object.assign(specification, {
@@ -32,16 +32,16 @@ class SpecificationRepository implements ISpecificationsRepository {
     this.specification.push(specification);
   }
 
-  findByName(name: string): boolean {
+  async findByName(name: string): Promise<boolean> {
     const findSpecification = this.specification.some(
       (specification) => specification.name === name
     );
     return findSpecification;
   }
 
-  list(): Specification[] {
+  async list(): Promise<Specification[]> {
     return this.specification;
   }
 }
 
-export { SpecificationRepository };
+export { SpecificationsRepository };
