@@ -20,10 +20,7 @@ class CreateSpecificationUseCase {
       name
     );
 
-    console.log(specificationAlreadyExists);
-
     if (specificationAlreadyExists) {
-      console.log("Caiu no throw");
       throw new AppError("Specification already exists");
     }
 
