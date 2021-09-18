@@ -23,7 +23,6 @@ class DevolutionRentalUseCase {
 
   async execute({ id, user_id }: IRequest): Promise<Rental> {
     const rental = await this.rentalsRepository.findById(id)
-    console.log(rental, 'asd')
     const car = await this.carsRepository.findById(rental.car_id)
     if (!rental) {
       throw new AppError("Rental does not exist!")

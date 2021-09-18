@@ -8,6 +8,8 @@ export async function ensureIsAdmin(request: Request, response: Response, next: 
   const usersRepository = new UsersRepository()
   const user = await usersRepository.findById(id)
 
+  if (!user) throw new AppError("Not a valid user, please signup")
+
   if (!user.isAdmin) {
     throw new AppError("User isn't an admin!")
   }

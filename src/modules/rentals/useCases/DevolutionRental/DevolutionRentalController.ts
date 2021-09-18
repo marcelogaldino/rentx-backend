@@ -6,8 +6,7 @@ class DevolutionRentalController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id: user_id } = request.user
     const { id } = request.params
-    console.log(id)
-    console.log(user_id)
+
     const devolutionRentalUseCase = container.resolve(DevolutionRentalUseCase)
 
     const rental = await devolutionRentalUseCase.execute({
