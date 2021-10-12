@@ -10,7 +10,7 @@ import { rentalRoutes } from "./rental.routes";
 const routes = Router();
 
 routes.use("/categories", categoriesRoutes);
-routes.use("/specification", specificationRoutes);
+routes.use("/specifications", specificationRoutes);
 routes.use("/users", usersRoutes);
 routes.use("/cars", carsRoutes);
 routes.use("/rentals", rentalRoutes);
